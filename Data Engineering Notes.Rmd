@@ -1,0 +1,78 @@
+---
+title: "Data Engineering Notes"
+author: "Chukwuemeka O. Okoli"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document:
+    df_print: paged
+  word_document: default
+header-includes: \usepackage{fvextra} 
+                  \usepackage{hyperref} 
+                  \usepackage{caption} 
+                  \usepackage{placeins}
+                  \usepackage{paralist}
+                  \usepackage{amsmath} 
+                  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width=7, fig.height=5, echo = TRUE)
+```
+
+## Introduction to Data Engineering
+
+```{=latex}
+ In the simplest possible terms, the field of Data Engineering concerns itself with the mechanics for the flow and access of data. And its goal is to make quality data available for fact-finding and data-driven decision making.
+
+The field of Data Engineering involves:
+\begin{enumerate}
+\item Collecting source data 
+    \begin{itemize}
+      \item Extracting, integrating, and organizing data from disparate sources
+        \begin{compactitem}
+          \item Develop tools, workflows, and processes that help data acquisition from multiple sources
+          \item Design, build, and maintain scalable data architecture for storing source data
+        \end{compactitem}
+    \end{itemize}
+
+\item Processing data
+    \begin{itemize}
+      \item Cleaning, transforming, and preparing data to make it usable
+        \begin{compactitem}
+          \item Implement and maintain distributed systems for large-scale data processing
+          \item Design pipelines for the extraction, transformation, and loading of data into data repositories
+          \item Design solutions for validating and safeguarding quality, privacy, and security of data
+          \item Performance optimization
+          \item Adherence to compliance guidelines
+        \end{compactitem}
+    \end{itemize}
+    
+\item Storing data
+    \begin{itemize}
+      \item Storing data for reliability and easy availability of data
+        \begin{compactitem}
+          \item Data stores for storage of processed data
+          \item Scalable systems
+          \item Ensuring data privacy, security, compliance, monitoring, backup, and recovery
+        \end{compactitem}
+    \end{itemize}
+    
+\item Making data available to users securely
+  \begin{compactitem}
+    \item APIs, services, and programs for retrieving data for end-users
+    \item User access through interfaces and dashboards
+    \item Checks and balances to ensure data security
+  \end{compactitem}
+\end{enumerate}
+
+
+
+
+```
+
+
+
