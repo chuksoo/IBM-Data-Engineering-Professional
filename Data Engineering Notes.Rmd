@@ -69,10 +69,175 @@ The field of Data Engineering involves:
   \end{compactitem}
 \end{enumerate}
 
+Modern data ecosystem includes a network of interconnected and continually evolving entities that include:
+\begin{compactitem}
+\item Data, that is available in a host of different formats, structures, and sources. 
+\item Enterprise Data Environment, in which raw data is staged so it can be organized, cleaned, and optimized for use by end-users.
+\item End-users, such as business stakeholders, analysts, and programmers who consume data for various purposes.
+\end{compactitem}
+Emerging technologies such as Cloud Computing, Machine Learning, and Big Data, are continually reshaping the data ecosystem and the possibilities it offers.
 
+Data Engineers, Data Analysts, Data Scientists, Business Analysts, and Business Intelligence Analysts, all play a vital role in the ecosystem for deriving insights and business results from data. \\
 
+\textbf{Responsibility of a Data Engineer}
+\begin{compactitem}
+\item Extract, organize, and integrate data from disparate sources
+\item Prepare data for analysis and reporting by transforming and cleansing it
+\item Design and manage data pipelines that encompasses the journey of data from source to destination systems
+\item Setup and manage infrastructure for ingestion, processing and storage of data including data platforms, data stores, distributed systems, and data repositories.
+\end{compactitem}
 
+\textbf{Skillset of a Data Engineer} \\
+Some of the technical skills includes knowledge of:
+\begin{compactitem}
+\item Operating Systems
+  \begin{compactitem}
+  \item UNIX
+  \item Linus
+  \item Windows Administrative Tools
+  \item System Utilities \& Commands
+  \end{compactitem}
+\item Infrastructure Components
+  \begin{compactitem}
+  \item Virtual Machines
+  \item Networking
+  \item Application Services
+  \item Cloud-based Services like AWS, Google Cloud Platform (GCP), IBM Cloud, Microsoft Azure 
+  \end{compactitem}
+\item Databases and Data Warehouses
+  \begin{compactitem}
+  \item RDBMS - IBM DB2, MySQL, Oracle Database, PostgreSQL
+  \item NoSQL - Redis, MongoDB, Cassandra, Neo4J
+  \item Data Warehouses - Oracle Exadata, IBM DB2 Warehouse on cloud, IBM Netezza Performance Server, Amazon Redshift
+  \end{compactitem}
+\item Data Pipelines
+  \begin{compactitem}
+  \item Apache Beam
+  \item Airflow
+  \item DataFlow
+  \end{compactitem}
+\item ETL Tools
+  \begin{compactitem}
+  \item IBM Infosphere Information Server
+  \item AWS Glue
+  \item Improvado
+  \end{compactitem}
+\item Proficiency in languages for querying, manipulating, and processing data
+  \begin{compactitem}
+  \item SQL for relational databases, SQL-like query languages for NoSQL databases
+  \item Python, R, and Java
+  \item Shell and Scripting languages such as Unix/Linux Shell and PowerShell
+  \end{compactitem}
+\item Big Data processing tools
+  \begin{compactitem}
+  \item Hadoop
+  \item Hive
+  \item Spark
+  \end{compactitem}
+\end{compactitem}
+
+\textbf{Role of a Data Engineer} \\
+The goal of Data Engineering is to make quality data available for analytics and decision-making. And it does this by collecting raw source data, processing data so it becomes usable, storing data, and making quality data available to users securely.  
+
+The role of a Data Engineer includes:
+\begin{compactitem}
+\item Gathering data from disparate sources.
+\item Integrating data into a unified view for data consumers.
+\item Preparing data for analytics and reporting.
+\item Managing data pipelines for a continuous flow of data from source to destination systems.
+\item Managing the complete infrastructure for the collection, processing, and storage of data.
+\end{compactitem}
+
+To be successful in their role, Data Engineers need a mix of technical, functional, and soft skills.
+\begin{compactitem}
+\item Technical Skills include working with different operating systems and infrastructure components such as virtual machines, networks, and application services. It also includes working with databases and data warehouses, data pipelines, ETL tools, big data processing tools, and languages for querying, manipulating, and processing data. 
+\item An understanding of the potential application of data in business is an important skill for a data engineer. Other functional skills include the ability to convert business requirements into technical specifications, an understanding of the software development lifecycle, and the areas of data quality, privacy, security, and governance. 
+\item Soft Skills include interpersonal skills, the ability to work collaboratively, teamwork, and effective communication. 
+\end{compactitem}
 ```
 
+## Data Ecosystems
 
+```{=latex}
+A Data Engineer’s ecosystem includes the infrastructure, tools, frameworks, and processes for extracting data, architecting and managing data pipelines and data repositories, managing workflows, developing applications, and managing BI and Reporting tools.
 
+There are two main types of data repositories - Transactional and analytical.
+\begin{compactitem}
+\item \textbf{Transactional systems, also known as Online Transaction Processing (or OLTP) systems}, are designed to store high-volume day-to-day operational data. Such as online banking transactions, ATM transactions, and airline bookings. While OLTP databases are typically relational, they can also be non-relational. 
+\item \textbf{Analytical systems, also known as Online Analytical Processing (OLAP) systems}, are optimized for conducting complex data analytics. These include relational and non-relational databases, data warehouses, data marts, data lakes, and big data stores. The type, format, sources of data, and context of use influence which data repository is ideal.
+\end{compactitem}
+
+Based on how well-defined the structure of the data is, data can be categorized as
+\begin{compactitem}
+\item Structured data, that is data which is well organized in formats that can be stored in databases.
+  \begin{compactitem}
+  \item SQL Databases
+  \item Online Transaction Processing
+  \item Spreadsheet
+  \item Online forms
+  \item Sensors GPS and RFID
+  \item Network and Web server logs
+  \end{compactitem}
+\item Semi-structured data, that is data which is partially organized and partially free-form.
+  \begin{compactitem}
+  \item E-mails
+  \item XML and other markup language
+  \item Binary executables
+  \item TCP/IP packets
+  \item Zipped files
+  \item Integration of data
+  \end{compactitem}
+\item Unstructured data, that is data which can not be organized conventionally into rows and columns.
+  \begin{compactitem}
+  \item Web pages
+  \item Social media feeds
+  \item Images in varied file formats
+  \item Video and Audio files
+  \item Documents and PDF files
+  \item Powerpoint presentation
+  \item Media logs
+  \item Surveys
+  \end{compactitem}
+\end{compactitem}
+
+Data comes in a wide-ranging variety of file formats, such as, delimited text files, spreadsheets, XML, PDF, and JSON, each with its own list of benefits and limitations of use.
+
+Data is extracted from multiple data sources, ranging from relational and non-relational databases, to APIs, web services, data streams, social platforms, and sensor devices.
+
+Once the data is identified and gathered from different sources, it needs to be staged in a data repository so that it can be prepared for analysis. The type, format, and sources of data influence the type of data repository that can be used.
+
+Data professionals need a host of languages that can help them extract, prepare, and analyse data. These can be classified as:
+\begin{compactitem}
+\item Querying languages, such as SQL, used for accessing and manipulating data from databases.
+\item Programming languages such as Python, R, and Java, for developing applications and controlling application behavior.
+\item Shell and Scripting languages, such as Unix/Linux Shell, and PowerShell, for automating repetitive operational tasks.
+\end{compactitem}
+```
+
+## Data Repository
+
+```{=latex}
+A \textbf{Data Repository} is a general term that refers to data that has been collected, organized, and isolated so that it can be used for reporting, analytics, and also for archival purposes. 
+
+The different types of Data Repositories include:
+\begin{itemize}
+\item Databases, which can be relational or non-relational, each following a set of organizational principles, the types of data they can store, and the tools that can be used to query, organize, and retrieve data.
+\item Data Warehouses, that consolidate incoming data into one comprehensive store house. 
+\item Data Marts, that are essentially sub-sections of a data warehouse, built to isolate data for a particular business function or use case.
+\item Data Lakes, that serve as storage repositories for large amounts of structured, semi-structured, and unstructured data in their native format.
+\item Big Data Stores, that provide distributed computational and storage infrastructure to store, scale, and process very large data sets.
+\end{itemize}
+
+The ETL, or Extract Transform and Load, Process is an automated process that converts raw data into analysis-ready data by:
+\begin{compactitem}
+\item Extracting data from source locations.
+\item Transforming raw data by cleaning, enriching, standardizing, and validating it.
+\item Loading the processed data into a destination system or data repository.
+\end{compactitem}
+
+The ELT, or Extract Load and Transfer, Process is a variation of the ETL Process. In this process, extracted data is loaded into the target system before the transformations are applied. This process is ideal for Data Lakes and working with Big Data.
+
+Data Pipeline, sometimes used interchangeably with ETL and ELT, encompasses the entire journey of moving data from its source to a destination data lake or application, using the ETL or ELT process.
+
+Data Integration Platforms combine disparate sources of data, physically or logically, to provide a unified view of the data for analytics purposes.
+```
