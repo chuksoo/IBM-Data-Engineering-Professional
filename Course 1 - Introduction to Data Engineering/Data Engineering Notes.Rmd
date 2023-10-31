@@ -1,6 +1,6 @@
 ---
 title: "Data Engineering Notes"
-author: "Chukwuemeka O. Okoli"
+author: "Chuks Okoli"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   pdf_document:
@@ -263,3 +263,84 @@ Big Data processing technologies help derive value from big data. These include 
 \end{compactitem}
 
 ```
+
+## Data Platform Layer
+
+```{=latex}
+The architecture of a data platform can be seen as a set of layers, or functional components, each one performing a set of specific tasks. These layers include:
+\begin{itemize}
+\item \textbf{Data Ingestion Layer:} Responsible for connecting to source systems and bringing data into the platform. It transfers data in streaming or batch modes and maintains metadata about the collected data.
+\item \textbf{Data Storage and Integration Layer:} Stores data for processing, transforms and merges data logically or physically, and makes data available for processing in streaming and batch modes. Relational and non-relational databases are commonly used in this layer.
+\item \textbf{Data Processing Layer:} Processes data by performing validations, transformations, and applying business logic. It reads data from storage, supports querying tools and programming languages, and allows analysts and data scientists to work with the data.
+\item \textbf{Analysis and User Interface Layer:} Delivers processed data to various users, including business intelligence analysts, data scientists, and other applications. It supports querying tools, programming languages, APIs, and visualization tools like dashboards and business intelligence applications.
+\item \textbf{Data Pipeline Layer:} Overlaying other layers, it implements and maintains a continuously flowing data pipeline. It uses Extract, Transform, and Load (ETL) tools such as Apache Airflow and DataFlow to ensure a smooth data flow across the platform.
+\end{itemize}
+
+A well-designed data repository is essential for building a system that is scalable and capable of performing during high workloads. 
+
+The choice or design of a data store is influenced by the type and volume of data that needs to be stored, the intended use of data, and storage considerations. The privacy, security, and governance needs of your organization also influence this choice.
+
+The CIA, or Confidentiality, Integrity, and Availability triad are three key components of an effective strategy for information security. The CIA triad is applicable to all facets of security, be it infrastructure, network, application, or data security.
+```
+
+## Data Collection and Wrangling
+
+```{=latex}
+Depending on where the data must be sourced from, there are a number of methods and tools available for gathering data. These include query languages for extracting data from databases, APIs, Web Scraping, Data Streams, RSS Feeds, and Data Exchanges. 
+
+Once the data you need has been gathered and imported, your next step is to make it analytics-ready. This is where the process of Data Wrangling, or Data Munging, comes in. 
+
+Data Wrangling involves a whole range of transformations and cleansing activities performed on the data. Transformation of raw data includes the tasks you undertake to: 
+\begin{compactitem}
+\item Structurally manipulate and combine data using Joins and Unions. 
+\item Normalize data, that is, clean the database of unused and redundant data.
+\item Denormalize data, that is, combine data from multiple tables into a single table so that it can be queried faster.
+\end{compactitem}
+
+Cleansing activities include: 
+\begin{compactitem}
+\item Profiling data to uncover anomalies and quality issues.
+\item Visualizing data using statistical methods in order to spot outliers. 
+\item Fixing issues such as missing values, duplicate data, irrelevant data, inconsistent formats, syntax errors, and outliers. 
+\end{compactitem}
+
+A variety of software and tools are available for the data wrangling process. Some of the popularly used ones include Excel Power Query, Spreadsheets, OpenRefine, Google DataPrep, Watson Studio Refinery, Trifacta Wrangler, Python, and R, each with their own set of features, strengths, limitations, and applications.
+```
+
+## Querying Data, Performance Tuning and Troubleshooting
+```{=latex}
+\begin{compactitem}
+\item In order for raw data to become analytics-ready, a number of transformation and cleansing tasks need to be performed on raw data. And that requires you to understand your dataset from multiple perspectives. One of the ways in which you can explore your dataset is to query it. 
+\item Basic querying techniques can help you explore your data, such as, counting and aggregating a dataset, identifying extreme values, slicing data, sorting data, filtering patterns, and grouping data.
+\item In a data engineering lifecycle, the performance of data pipelines, platforms, databases, applications, tools, queries, and scheduled jobs, need to be constantly monitored for performance and availability. 
+\item The performance of a data pipeline can get impacted if the workload increases significantly, or there are application failures, or a scheduled job does not work as expected, or some of the tools in the pipeline run into compatibility issues. 
+\item Databases are susceptible to outages, capacity overutilization, application slowdown, and conflicting activities and queries being executed simultaneously. 
+\item Monitoring and alerting systems collect quantitative data in real time to give visibility into the performance of data pipelines, platforms, databases, applications, tools, queries, scheduled jobs, and more.
+\item Time-based and condition-based maintenance schedules generate data that helps identify systems and procedures responsible for faults and low availability.
+\end{compactitem}
+```
+
+## Career Opportunities in Data Engineering
+```{=latex}
+Data Engineering is reported to be one of the top ten jobs experiencing tremendous growth in the U.S. today. It is also reported to be one of the fastest growing tech occupations with year-over-year growth of around 50%. 
+
+Currently, the demand for skilled data engineers far outweighs the supply, which means companies are willing to pay a premium to hire skilled data engineers.
+
+Data engineering roles in organizations tend to break the specialization up into Data Architecture, Database Design and Architecture, Data Platforms, Data Pipelines and ETL, Data Warehouses, and Big Data.
+
+Regardless of the niche you choose to specialize in, knowledge of operating systems, languages, databases, and infrastructure components, is essential. 
+
+To work your way up from a Junior Data Engineer to a Lead or Principal Data Engineer, you need to continually advance your technical, functional, and soft skills from a foundational level to an expert level. You need to not only expand your skills in your niche area, but also into other areas of data engineering at the same time.
+
+Big Data Engineers and Machine Learning Engineers are some of the emerging roles in this field and they require specialized skills in addition to basic data engineering.
+
+There are several paths you can consider in order to gain entry into the data engineering field. 
+\begin{compactitem}
+\item An academic degree in Computer Science or engineering qualifies you for an entry-level job.
+\item If you are not a graduate, or a graduate in a non-relate stream, you can earn professional certifications from online multi-course specializations offered by learning platforms such as Coursera, edX, and Udacity.
+\item If you have a coding background, or you are an IT Support Specialist, a Software Tester, a Programmer, or a data professional such as a Statistician, Data Analyst, or BI Analyst, you can upskill with the help of online courses to become a Data Engineer. 
+\end{compactitem}
+
+```
+
+
