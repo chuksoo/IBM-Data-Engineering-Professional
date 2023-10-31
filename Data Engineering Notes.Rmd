@@ -241,3 +241,25 @@ Data Pipeline, sometimes used interchangeably with ETL and ELT, encompasses the 
 
 Data Integration Platforms combine disparate sources of data, physically or logically, to provide a unified view of the data for analytics purposes.
 ```
+
+## Big Data Platforms
+
+```{=latex}
+Big Data refers to the vast amounts of data that is being produced each moment of every day, by people, tools, and machines. The sheer velocity, volume, and variety of data challenged the tools and systems used for conventional data, leading to the emergence of processing tools and platforms designed specifically for Big Data.
+
+\textbf{V's of Big Data}
+\begin{compactitem}
+\item Velocity - speed at which data accumulates. Data is being generated extremely fast, in a process that never stops. Near or real-time streaming, local, and cloud-based technologies can process information very quickly. 
+\item Volume - scale of the data, or the increase in the amount of data stored. 
+\item Variety - the diversity of the data. Structured data fits neatly into rows and columns, in relational databases while unstructured data is not organized in a pre-defined way, like Tweets, blog posts, pictures, numbers, and video. Variety also reflects that data comes from different sources, machines, people, and processes, both internal and external to organizations. Drivers are mobile technologies, social media, wearable technologies, geo technologies, video, and many, many more. 
+\item Veracity - the quality and origin of data, and its conformity to facts and accuracy. Attributes include consistency, completeness, integrity, and ambiguity. 
+\item Value - our ability and need to turn data into value. \end{compactitem}
+
+Big Data processing technologies help derive value from big data. These include NoSQL databases and Data Lakes and open-source technologies such as Apache Hadoop, Apache Hive, and Apache Spark.
+\begin{compactitem}
+\item Apache Hadoop provides distributed storage and processing of large datasets across clusters of computers. One of its main components, the Hadoop File Distribution System, or HDFS, is a storage system for big data.
+\item Apache Hive is a data warehouse software for reading, writing, and managing large datasets files that are stored directly in either HDFS or other data storage systems such as Apache HBase.
+\item Apache Spark is a general-purpose data processing engine designed to extract and process large volumes of data. It is used to perform complex analytics in real-time.
+\end{compactitem}
+
+```
