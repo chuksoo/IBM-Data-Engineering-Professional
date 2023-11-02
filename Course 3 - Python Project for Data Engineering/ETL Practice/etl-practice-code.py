@@ -1,8 +1,8 @@
 # 1. Download the zip file containing the required data in multiple formats. Run in terminal
-# wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/
+# wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0221EN-SkillsNetwork/labs/module%206/Lab%20-%20Extract%20Transform%20Load/data/datasource.zip 
 
 # 2. Unzip the downloaded file.
-# unzip source.zip
+# unzip datasource.zip
 
 # Import libraries
 import glob 
@@ -24,19 +24,20 @@ def extract_from_json(file_to_process):
     return dataframe 
 
 def extract_from_xml(file_to_process): 
-    dataframe = pd.DataFrame(columns=["name", "height", "weight"]) 
+    dataframe = pd.DataFrame(columns=["car_model", "year_of_manufacture", "price", "fuel"]) 
     tree = ET.parse(file_to_process) 
     root = tree.getroot() 
     for person in root: 
-        name = person.find("name").text 
-        height = float(person.find("height").text) 
-        weight = float(person.find("weight").text) 
-        dataframe = pd.concat([dataframe, pd.DataFrame([{"name":name, "height":height, "weight":weight}])], ignore_index=True) 
+        car_model = person.find("car_model").text 
+        year_of_manufacture = float(person.find("year_of_manufacture").text) 
+        price = float(person.find("price").text) 
+        fuel = person.find("fuel").text
+        dataframe = pd.concat([dataframe, pd.DataFrame([{"car_model":car_model, "year_of_manufacture":year_of_manufacture, "price":price, "fuel": fuel}])], ignore_index=True) 
     return dataframe 
 
 # Identify which function to call
 def extract(): 
-    extracted_data = pd.DataFrame(columns=['name','height','weight']) # create an empty data frame to hold extracted data 
+    extracted_data = pd.DataFrame(columns=['car_model', 'year_of_manufacture', 'price', 'fuel']) # create an empty data frame to hold extracted data 
      
     # process all csv files 
     for csvfile in glob.glob("*.csv"): 
@@ -54,14 +55,8 @@ def extract():
 
 # Transformation
 def transform(data): 
-    '''Convert inches to meters and round off to two decimals 
-    1 inch is 0.0254 meters '''
-    data['height'] = round(data.height * 0.0254,2) 
- 
-    '''Convert pounds to kilograms and round off to two decimals 
-    1 pound is 0.45359237 kilograms '''
-    data['weight'] = round(data.weight * 0.45359237,2) 
-    
+    '''Transform "price" and round off to two decimals '''
+    data['price'] = round(data.price, 2) 
     return data 
 
  # Loading and Logging
