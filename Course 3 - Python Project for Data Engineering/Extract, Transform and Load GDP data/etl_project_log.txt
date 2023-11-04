@@ -5,3 +5,10 @@
 2023-Nov-03-20:14:49, SQL Connection initiated
 2023-Nov-03-20:14:49, Data loaded to Database as table. Running the query
 2023-Nov-03-20:14:49, Process Complete
+2023-Nov-03-20:29:40, Preliminaries complete. Initiating ETL process
+2023-Nov-03-20:29:42, Data extraction complete. Initiating Transformation process
+2023-Nov-03-20:29:42, Data transformation complete. Initiating loading process
+2023-Nov-03-20:29:42, Data saved to CSV file
+2023-Nov-03-20:29:42, SQL Connection initiated
+2023-Nov-03-20:29:42, Data loaded to Database as table. Running the query
+2023-Nov-03-20:29:42, Process Complete
