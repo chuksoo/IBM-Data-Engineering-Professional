@@ -26,7 +26,7 @@
 24,Sweden,599.05
 25,Ireland,594.1
 26,Thailand,574.23
-27,Norway,554.11
+27,Norway,554.1
 28,Israel,539.22
 29,Singapore,515.55
 30,Austria,515.2
@@ -37,7 +37,7 @@
 35,Philippines,440.9
 36,Bangladesh,420.52
 37,Denmark,405.63
-38,South Africa,399.01
+38,South Africa,399.02
 39,Hong Kong,382.85
 40,Egypt,378.11
 41,Iran,367.97
@@ -50,7 +50,7 @@
 48,Iraq,267.89
 49,Portugal,267.72
 50,New Zealand,251.97
-51,Kazakhstan,245.69
+51,Kazakhstan,245.7
 52,Greece,239.3
 53,Qatar,219.57
 54,Algeria,206.01
@@ -87,7 +87,7 @@
 85,Ghana,66.62
 86,Myanmar,63.99
 87,Jordan,52.06
-88,Tunisia,49.81
+88,Tunisia,49.82
 89,Uganda,49.79
 90,Cameroon,48.62
 91,Latvia,47.4
@@ -112,7 +112,7 @@
 110,Trinidad and Tobago,28.22
 111,Georgia,27.95
 112,Haiti,26.58
-113,Armenia,23.73
+113,Armenia,23.72
 114,Guinea,23.33
 115,Burkina Faso,21.08
 116,Mali,20.78
@@ -122,7 +122,7 @@
 120,Palestine,19.21
 121,Botswana,19.57
 122,Yemen,19.53
-123,Malta,19.41
+123,Malta,19.4
 124,Benin,19.24
 125,Nicaragua,17.29
 126,Jamaica,17.25
@@ -189,4 +189,4 @@
 187,Palau,0.26
 188,Kiribati,0.25
 189,Nauru,0.15
-190,Tuvalu,0.07
+190,Tuvalu,0.06
