@@ -1,0 +1,110 @@
+---
+title: "Relational Database Notes"
+author: "Chuks Okoli"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document:
+    df_print: paged
+  word_document: default
+header-includes: \usepackage{fvextra} 
+                  \usepackage{hyperref} 
+                  \usepackage{caption} 
+                  \usepackage{placeins}
+                  \usepackage{paralist}
+                  \usepackage{amsmath} 
+                  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width=7, fig.height=5, echo = TRUE)
+```
+
+## Relational Database Concepts
+
+```{=latex}
+
+Data is unorganized information, that is processed to make it meaningful. It can consist of Facts, observations, perceptions, Numbers, characters, symbols, Images Or a mix of any of these. Data can be structured, semi-structured or unstructured. Structured data can be represented in rows and columns, just like a table. It has a well-defined schema, and a rigid structure. These characteristics make relational databases, which store data in tables, ideal for structured data. Semi-structured data has some organizational properties, but not enough to be easily stored in the rows and columns required by a rigid, tabular schema. Instead, semi-structured data is organized into a hierarchy using tags and metadata. Unstructured data doesn’t have an identifiable structure; it doesn’t follow any specific format, sequence, semantics, or rules. It cannot be organized into tabular format for storage in a relational database. Unstructured data is often stored in NoSQL databases. 
+
+Structured and semi-structured data is often stored in databases; either relational databases like DB2 or non-relational databases like MongoDB. Each type of database is optimized for different types of operations. The type of data you need and the processes you want to apply to it will determine the type storage you choose. 
+
+An Online Transaction Processing (OLTP) system is optimized for storing the high-volume of day-to-day operational data that many businesses rely on. OLTP systems are typically relational databases but can also be built on relational databases. An Online Analytical Processing (OLAP) system is optimized for conducting complex data analytics. OLAP systems include relational and non-relational databases, data warehouses, data lakes and other big data stores. Relational databases consist of structured data stored in related tables. 
+
+Relational databases and their supporting systems are called Relational Database Management Systems, or RDBMS. Examples include IBM DB2, Microsoft SQL Server, Oracle, My SQL. Relational databases are primarily OLTP systems, used to support day-to-day business activities such as customer transactions, human resource activities, and workflows. They can also be used to perform data analysis, for example, data from a customer relationship management system can be used to make sales projections. 
+
+```
+
+## Data Types
+
+```{=latex}
+A database table represents a single entity and the columns in the table represent attributes of that entity. The commonly used data types in an RDBMS are:
+\begin{compactitem}
+\item Character string data types include fixed length data types and variable length. The length of a fixed length character string is often denoted in brackets after the type name, such as CHAR(10). This type uses the same amount of space in the database irrespective of the length of the actual data stored in it. 
+\item Variable length character strings, often named VARCHAR, can specify a maximum length for the string. 
+\item Numeric data types include integer types and decimal types. 
+    \begin{compactitem}
+    \item Integer data types only hold whole numbers, with no decimal parts. Integer data types typically use 2 or 4 bytes of storage to hold at numbers from negative 2 million or 32 thousand to positive 2 million or 32 thousand. 
+    \item Smallints enable you to use less space for smaller numbers and bigints increase the size of the number that the data type can hold. 
+    \item Decimal data types can store whole numbers and decimal numbers. The sizes and precision of these data types vary between RDBMSs and have names such as numeric, decimal, dec, real, double, float, decfloat, etc. 
+    \item Date/time data can be categorised into dates, times, and timestamps. Dates consist of three-part values for the year, month, and day. And times also generally consist of a three part value for the hours, minutes, and seconds. A timestamp column is a combination of both and consists of seven parts: year, month, day, hour, minute, second, and microsecond. 
+    \item Other commonly used data types include: 
+        \begin{compactitem}
+        \item A Boolean which only holds 1 bit of information: a 0 or a 1. You can use these for true/false or yes/no type data. 
+        \item A binary string which holds a sequence of bytes that represent image, voice, or other media data. 
+        \item The XML data type can store platform agnostic unstructured data in a hierarchical form. In addition to the various built-in data types, many relational databases also allow you to create your own custom or “user defined” data types (UDTs) that are derived or extended from the built in types. 
+        \end{compactitem}
+    \end{compactitem}
+\end{compactitem}
+```
+
+
+```{=latex}
+\textbf{Summary}
+\begin{compactitem}
+\item The relational model is the most used data model for databases because this model allows for logical data independence, physical data independence, and physical storage independence. 
+\item Entities are objects that exist independently of any other entities in the database, while attributes are the data elements that characterize the entity.
+\item The building blocks of a relationship are entities, relationship sets, and crows foot notations. 
+\item Relationships can be one-to-one, one-to-many, or many-to-many.
+\item When translating an Entity-Relationship Diagram to a relational database table, the entity becomes the table and the attributes become columns in the table.
+\item Data types define the type of data that can be stored in a column and can include character strings, numeric values, dates/times, Boolean values and more.
+\item The advantages of using the correct data type for a column are data integrity, data sorting, range selection, data calculations, and the of standard functions.
+\item In a relational model, a relation is made up of two parts: A relation schema specifying the name of a relation and the attributes and a relation instance, which is a table made up of the attributes, or columns, and the tuples, or rows. 
+\item Degree refers to the number of attributes, or columns, in a relation. 
+\item Cardinality refers to the number of tuples, or rows in a relation. 
+\end{compactitem}
+```
+
+## Relational Database Products
+```{=latex}
+
+There are four types of database topology:
+\begin{compactitem}
+\item \textbf{Single tier.} The database is installed on a user’s local desktop. 
+\item \textbf{2-tier.} The database resides on a remote server and users access it from client systems. 
+\item \textbf{3-tier.} The database resides on a remote server and users access it through an application server or a middle tier. 
+\item \textbf{Cloud deployments.} The database resides in the cloud, and users access it through an application server layer or another interface that also resides in the cloud.
+\end{compactitem}
+
+
+In shared disk distributed database architectures, multiple database servers process the workload in parallel, allowing the workload to be processed faster. There are three shared nothing distributed database architectures:
+
+\begin{compactitem}
+\item \textbf{Replication.} Changes taking place on a database server are replicated to one or more database replicas. In a single location, database replication provides high availability. When database replica is stored in a separate location, it provides a copy of the data for disaster recovery.
+\item \textbf{Partitioning.} Very large tables are split across multiple logical partitions.
+\item \textbf{Sharding.} Each partition has its own compute resources.
+\end{compactitem}
+
+There are different classes of database users, who use databases in different ways:
+\begin{compactitem}
+\item Three main classes of users are Data Engineers, Data Scientists and Business Analysts, and Application Developers.
+\item Database users can access databases through Graphical and Web interfaces, command line tools and scripts, and APIs and ORMs.
+\item Major categories of database applications include Database Management tools, Data Science and BI tools, and purpose built or off the shelf business applications.
+\item Relational databases are available with commercial licenses or open source.
+\item MySQL is an object-relational database that supports many operating systems, a range of languages for client application development, relational and JSON data, multiple storage engines, and high availability and scalability options.
+\item PostgreSQL is an open source, object-relational database that supports a range of languages for client application development, relational, structured, and non-structured data, and replication and partitioning for high availability and scalability
+\end{compactitem}
+```
+
