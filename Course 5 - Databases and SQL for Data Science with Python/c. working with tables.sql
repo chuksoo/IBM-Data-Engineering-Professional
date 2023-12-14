@@ -100,3 +100,10 @@ Retrieve All Quarter Back Coaches
 SELECT	*
 FROM	coaches
 WHERE	coach_type LIKE 'Quarterback%';
+
+/*
+Retrieve All Coaches with Name starting with "K"
+*/
+SELECT	*
+FROM	coaches
+WHERE	coach_name LIKE 'K%';
