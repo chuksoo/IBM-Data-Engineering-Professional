@@ -32,54 +32,50 @@ INSERT INTO bball_stats(player_id, player_name,player_num,player_position,assist
 
 --- Questions
 /*
-3a.	Find the Number of Players at each Position 
+Find the Number of Players at each Position 
 */
-
 SELECT		player_position, COUNT(player_name) AS number_players
 FROM		bball_stats
 GROUP BY	player_position;
 
 /*
-3b.	Find the Number of Players assigned to each Coach
+Find the Number of Players assigned to each Coach
 */
-
 SELECT		players_coach, COUNT(player_name) AS number_players
 FROM		bball_stats
 GROUP BY	players_coach;
 
 /*
-3c.	Find the Most Points scored per game by Position
+Find the Most Points scored per game by Position
 */
 SELECT		player_position, MAX(points / games_played) AS pointscored_per_game
 FROM		bball_stats
 GROUP BY	player_position;
 
 /*
-3d.	Find the Number of Rebounds per game by Coach
+Find the Number of Rebounds per game by Coach
 */
 SELECT		players_coach, SUM(rebounds / games_played) AS rebounds_per_games
 FROM		bball_stats
 GROUP BY	players_coach;
 
 /*
-3e.	Find the Average number of Assist by Coach
+Find the Average number of Assist by Coach
 */
-
 SELECT		players_coach, AVG(assist) AS avg_assist
 FROM		bball_stats
 GROUP BY	players_coach;
 
 /*
-3f.	Find the Average number of Assist per game by Position
+Find the Average number of Assist per game by Position
 */
 SELECT		player_position, AVG(assist / games_played) AS avg_assist_per_game
 FROM		bball_stats
 GROUP BY	player_position;
 
 /*
-3g.	Find the Total number of Points by each Player Position
+Find the Total number of Points by each Player Position
 */
-
 SELECT		player_position, SUM(points) AS total_points
 FROM		bball_stats
 GROUP BY	player_position;
