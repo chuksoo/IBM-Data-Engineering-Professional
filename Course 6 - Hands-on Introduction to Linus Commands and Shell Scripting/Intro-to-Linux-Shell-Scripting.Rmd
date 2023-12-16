@@ -1,0 +1,91 @@
+---
+title: "Introduction to Linux and Shell Scripting Notes"
+author: "Chuks Okoli"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document:
+    df_print: paged
+  word_document: default
+header-includes: \usepackage{fvextra} 
+                  \usepackage{hyperref} 
+                  \usepackage{caption} 
+                  \usepackage{placeins}
+                  \usepackage{paralist}
+                  \usepackage{amsmath} 
+                  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width=7, fig.height=5, echo = TRUE)
+```
+
+# Week 1
+
+## Introduction to Linux
+
+```{=latex}
+\textbf{Summary}
+\begin{compactitem}
+\item Linux is a multi-user and portable operating system that supports multitasking. It originated in the 1980s when Linus Torvalds developed a free, open-source version of the Unix kernel. 
+\item Linux is widely used today in mobile devices, desktops, supercomputers, data centers, and cloud servers. 
+\item Linux distributions (also known as distros) differ by their UIs, shell applications, and how the OS is supported and built. 
+\item The design of a distro is catered toward its specific audience and/or use case. Popular Linux distributions include Red Hat Enterprise Linux (RHEL), Debian, Ubuntu, Suse (SLES, SLED, OpenSuse), Fedora, Mint, and Arch. 
+\item The Linux system consists of five key layers: the UI, application, OS, kernel, and hardware. The user interface enables users to interact with applications. Applications enable users to perform tasks within the system. The operating system runs on top of the kernel and is vital for system health and stability, and the kernel is the lowest-level software that enables applications to interact with hardware. Hardware includes all the physical or electronic components of your PC. 
+\item The Linux filesystem is a tree-like structure consisting of all directories and files on the system. 
+\item A Linux shell is an OS-level application that you can use to enter commands. You use a terminal to send commands to the shell, and you can use the `cd` command to navigate around your Linux filesystem. 
+\item You can use a variety of command-line or GUI-based text editors such as GNU nano, vim, vi, and gedit. 
+\item .deb and .rpm are distinct file types used by package mangers in Linux operating systems. 
+\item You can use GUI-based and command-line package managers to update and install software on Linux systems. 
+\end{compactitem}
+```
+
+# Week 2
+
+## Overview of Common Linux Shell Commands
+
+```{=latex}
+
+There are four types of database topology:
+\begin{compactitem}
+\item A shell is an interactive user interface. You use shell commands to navigate and work with files and directories.
+\item The `curl` and `wget` commands display and download files from URLs, and the`cat` and `tail`commands display file contents.
+\item You can get user information with the `whoami` and `id`commands, and get operating system information using the `uname` command. You can check system disk usage using the `df` command and monitor processes and resource usage with `ps` and `top`.Print string or variable value using `echo`,print and extract information about the date with the `date` command, and read the manual for any command using `man`.
+\item `ls` lists all files and directories within a specified directory tree and `cd` navigates between directories. The `find` command finds files in your directories.
+\item Relative paths are relative to your current working directory, while absolute paths stand independently
+\item You can create files and directories with the `touch` and `mkdir` commands, delete them with `rm` and `rmdir`, and copy and move them `cp` and `mv`.
+\item The `cat`, `more`, `head`, and `tail` commands allow you to sort and view file contents or view only a certain number of lines. Determine line, word, and character counts with `wc`.
+\item You can use `sort` to view the lines of a file alphanumerically and `uniq` to remove repeated lines from your view. `grep` gets the lines of a file that match your desired criteria, and `cut` extracts slices and fields from lines. You can merge lines from different files using `paste`.
+\item `hostname` and `ifconfig` allow you to view the network configuration. You can test a network connection using `ping` and send and receive data using `curl` and `wget`.
+\item Compression preserves storage space, speeds data transfer, and reduces system load.
+\item `zip` compresses files and folders prior to archiving them. `tar` archives and compresses files and directories into a tarball. `unzip` unpacks and decompresses a zipped archive, and `tar` can also decompress and unpack a tar.gz archive.
+\end{compactitem}
+```
+
+# Week 3
+
+## Introduction to Shell Scripting
+
+### Types of SQL Statements
+```{=latex}
+\begin{compactitem}
+\item A shell script is a program that begins with a ‘shebang’ directive and is used to run commands and programs. Scripting languages are interpreted rather than compiled.
+\item Filters are shell commands. The pipe operator `|` allows you to chain filter commands. 
+\item Shell variables can be assigned values with `=` and listed using `set.` Environment variables are shell variables with extended scope, and you can list them with `env.`
+\item Metacharacters are special characters that have meaning to the shell.
+\item Quoting specifies whether the shell should interpret special characters as metacharacters or 'escape' them.
+\item Input/Output, or I/O redirection, refers to a set of features used for redirecting.
+\item You can use command substitution to replace a command with its output.
+\item Command line arguments provide a way to pass arguments to a shell script.
+\item In concurrent mode, multiple commands can run simultaneously.
+\item You can schedule cron jobs to run periodically at selected times. `m h dom mon dow command` is the cron job syntax.
+\item You can edit cron jobs by running `crontab -e,` and `crontab -l` lists all cron jobs in the cron table.
+\end{compactitem}
+```
+
+# Week 4
+
+## Designing Keys, Indexes, and Constraints
