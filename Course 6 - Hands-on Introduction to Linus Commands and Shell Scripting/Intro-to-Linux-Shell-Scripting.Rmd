@@ -69,7 +69,6 @@ There are four types of database topology:
 
 ## Introduction to Shell Scripting
 
-### Types of SQL Statements
 ```{=latex}
 \begin{compactitem}
 \item A shell script is a program that begins with a ‘shebang’ directive and is used to run commands and programs. Scripting languages are interpreted rather than compiled.
