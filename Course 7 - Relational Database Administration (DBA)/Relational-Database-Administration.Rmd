@@ -1,0 +1,223 @@
+---
+title: "Relational Database Administration Notes"
+author: "Chuks Okoli"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document:
+    df_print: paged
+  word_document: default
+header-includes: \usepackage{fvextra} 
+                  \usepackage{hyperref} 
+                  \usepackage{caption} 
+                  \usepackage{placeins}
+                  \usepackage{paralist}
+                  \usepackage{amsmath} 
+                  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width=7, fig.height=5, echo = TRUE)
+```
+
+# Week 1
+
+## Overview of Database Management Tasks
+
+```{=latex}
+\textbf{Typical day for a database administrator:}
+\begin{compactitem}
+\item Checking the state of the database. Database should be running with no errors. 
+\item Check that scheduled backups have completed and resolve issues.
+\item Responding to support tickets.
+\item Meeting with developers and other stakeholders.
+\item Monitoring database activity.
+\item Determine appropriate server resources needed for planning a new database.
+\end{compactitem}
+
+\textbf{Database Management Lifecycle} \\
+The database lifecycle is shown in \textbf{Fig. \ref{fig:dba_lifecycle}}.
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.75\linewidth]{database lifecycle.png}
+  \caption{The database lifecycle}
+  \label{fig:dba_lifecycle}
+\end{figure}
+
+\textit{Requirement analysis}
+\begin{compactitem}
+\item Understand purpose and scope of the database
+  \begin{compactitem}
+    \item Establish what data is involved
+    \item Talk to the users and producers of the data, and develop samples of how users will use the data such as reports and dashboards
+  \end{compactitem}
+\item Work with stakeholders such as Developers, Data Engineers, DBAs, Technology Managers, End-Users and determine requirements
+\end{compactitem}
+
+\textit{Design and Plan}
+\begin{compactitem}
+\item Develop a plan for implementing the database by working with database objects such as instances, databases, tables, and indexes.
+  \begin{compactitem}
+    \item Develop database model showing which instances contains which databases and tables, how tables relate to each other, how users access data and so on.
+    \item Design Entity Relationship Diagrams or ERDs
+  \end{compactitem}
+\item Determine appropriate server resources like storage space, memory, processing power, and log file size.
+\item Plan for how database objects are physically stored.
+\end{compactitem}
+
+\textit{Implementation}
+\begin{compactitem}
+\item Create and configure database objects like instances, databases, tables, views, and indexes.
+\item Configuring database security, granting access for database users, groups, and roles
+\item Automates repeated database tasks such as backups, restores, and deployments to improve efficiency
+\item Import data from other databases, export data based on a query from a different source, or migrate projects from one environment to another, such as moving a project from the Application Development environment to the Production environment.
+\end{compactitem}
+
+\textit{Monitoring and Maintenance}
+\begin{compactitem}
+\item Looks after the daily operations of the database
+\item Monitor the system for long-running queries and help end-users optimize them to run faster and not overuse system resources
+\item Review report and monitor activity, identify expensive queries, resource waits
+\item Apply upgrades and security patches to database software. 
+\item Recommend and implement emerging database technologies
+\item Automate deployments and routine tasks such as backups whenever possible to keep processes working efficiently.
+\item Reviews logs and alerts, looking for failed logins and data access attempts to identify potential threats and vulnerabilities. 
+\item Maintains database user and application permissions – revoking access to users and groups who should no longer have access and adding new users and roles as required to perform their jobs.
+\end{compactitem}
+
+
+```
+
+## Server Objects and Hierarchy
+
+```{=latex}
+\textbf{Database Objects}
+\begin{compactitem}
+\item An instance is a logical boundary for a database or set of databases where you organize database objects and set configuration parameters. 
+\item Common database objects are items that exist within the database such as tables, constraints, indexes, keys, views, aliases, triggers, events, and log files.
+\item Different RDBMSs use different names for their system objects. Most use the terms system schema, system tables, catalog, or directory.
+\item Database storage is managed through logical database objects and physical storage.
+\end{compactitem}
+```
+
+# Week 2
+
+## Backup and Restore Databases
+
+```{=latex}
+Backup and restore refer to the process of backing up data for protection purposes-restoring it after data loss from an unplanned shutdown, accidental deletion, or data corruption. \\
+\textbf{Backup and Restore scenarios} 
+\begin{compactitem}
+\item Saving a copy of data for protection
+\item Recovering from data loss
+  \begin{compactitem}
+    \item After unplanned shutdown
+    \item Accidental deletion
+    \item Data corruption
+  \end{compactitem}
+\item Move to a different database system
+\item Share data with business partners
+\item Use a copy of the data, e.g., in development or test environment
+\end{compactitem}
+
+\textbf{Physical vs. logical backups} 
+\begin{compactitem}
+\item Logical backup
+  \begin{compactitem}
+    \item Contains DDL and DML commands to recreate database
+    \item Can reclaim wasted space
+    \item Slow and may impact performance
+    \item Granular
+    \item Backup/restore, import/export, dump \& load utilities
+  \end{compactitem}
+\item Physical backup
+  \begin{compactitem}
+    \item Copy of physical files, including logs, and configuration 
+    \item Smaller and quicker
+    \item Less Granular
+    \item Can only restore to similar RDBMS
+    \item Common for specialized storage and cloud
+  \end{compactitem}
+\end{compactitem}
+
+\textbf{What to backup}
+\begin{compactitem}
+  \item Database
+  \item Schema
+  \item Tables
+  \item Subset of data
+  \item Other objects
+\end{compactitem}
+
+\textbf{Key considerations}
+\begin{compactitem}
+  \item Check that your backup is valid
+  \item Check that your restore plan works
+  \item Ensure that your back up files are secure
+\end{compactitem}
+
+\textbf{Types of Backup}
+\begin{compactitem}
+  \item Full backups - complete copy of all of the data in the object or objects that you are backing up
+  \item Point-in-time backups - uses logged transactions to restore to an earlier point in time
+  \item Differential backups - a copy of any data that has changed since the last full backup was taken
+  \item Incremental backup - a copy of any data that has changed since the last backup of any type was taken
+\end{compactitem}
+
+\textbf{Backup Policies} \\
+Hot backup or online backup - are performed while the data is in use, while in Cold backup, the data is offline. Many decisions have to be made about backup policies such as: 
+\begin{compactitem}
+  \item Physical or logical
+  \item Full, differential, or incremental
+  \item Hot or cold
+  \item Compression
+  \item Encryption
+  \item Frequency:
+    \begin{compactitem}
+      \item Is data regularly changing or being added?
+      \item Is the existing table large?
+    \end{compactitem}
+  \item Schedule:
+    \begin{compactitem}
+      \item Is the data accessed equally across the 24-hour day?
+      \item Is it accessed at weekends?
+    \end{compactitem}
+  \item Automated backups
+  \item Consider cloud backups
+\end{compactitem}
+
+\textbf{Summary}
+\begin{compactitem}
+\item The types of backups are full, point-in-time, differential, and incremental.
+\item The difference between physical backups and logical backups, and between hot backups and cold backups.
+\item Your backup policy should be determined from your recovery needs and your data usage.
+\item Database transaction logs keep track of all activities that change the database structure and record transactions that insert, update, or delete data in the database.
+\end{compactitem}
+```
+
+# Week 3
+
+## Monitoring and Optimization
+
+```{=latex}
+\begin{compactitem}
+\item A shell script is a program that begins with a ‘shebang’ directive and is used to run commands and programs. Scripting languages are interpreted rather than compiled.
+\item Filters are shell commands. The pipe operator `|` allows you to chain filter commands. 
+\item Shell variables can be assigned values with `=` and listed using `set.` Environment variables are shell variables with extended scope, and you can list them with `env.`
+\item Metacharacters are special characters that have meaning to the shell.
+\item Quoting specifies whether the shell should interpret special characters as metacharacters or 'escape' them.
+\item Input/Output, or I/O redirection, refers to a set of features used for redirecting.
+\item You can use command substitution to replace a command with its output.
+\item Command line arguments provide a way to pass arguments to a shell script.
+\item In concurrent mode, multiple commands can run simultaneously.
+\item You can schedule cron jobs to run periodically at selected times. `m h dom mon dow command` is the cron job syntax.
+\item You can edit cron jobs by running `crontab -e,` and `crontab -l` lists all cron jobs in the cron table.
+\end{compactitem}
+```
+
+# Week 4
+
+## Troubleshooting and Automation
