@@ -85,6 +85,3 @@ There are four types of database topology:
 \end{compactitem}
 ```
 
-# Week 4
-
-## Designing Keys, Indexes, and Constraints
