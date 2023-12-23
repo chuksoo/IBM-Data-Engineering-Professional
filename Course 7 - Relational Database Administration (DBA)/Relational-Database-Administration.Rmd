@@ -189,12 +189,40 @@ Hot backup or online backup - are performed while the data is in use, while in C
   \item Consider cloud backups
 \end{compactitem}
 
-\textbf{Summary}
+\textbf{Summary of Backup and Restore Databases}
 \begin{compactitem}
 \item The types of backups are full, point-in-time, differential, and incremental.
 \item The difference between physical backups and logical backups, and between hot backups and cold backups.
 \item Your backup policy should be determined from your recovery needs and your data usage.
 \item Database transaction logs keep track of all activities that change the database structure and record transactions that insert, update, or delete data in the database.
+\end{compactitem}
+
+\textbf{Security and User Management} \\
+\textit{Authorization} \\
+Authorization are priviledges granted to users, and to groups or roles. Use the \texttt{SQL GRANT CONNECT} command to grant connection access to a particular database to a particular user, group, or role. To grant connection access to an individual user rather than a group or role, you simply specify the user name in place of the group name. To grant database or table access:
+\begin{compactitem}
+\item To team, use \texttt{GRANT CONNECT TO ``salesteam''}
+\item To a specific person e.g., Joan, use \texttt{GRANT CONNET TO 'joan'}
+\item To grant select priviledges only on a table, use \texttt{GRANT SELECT ON mydb.mytable TO 'salesteam'}
+\item To grant insert priviledges, use \texttt{GRANT INSERT ON mydb.mytable TO 'salesteam'}
+\item To grant update priviledges, use \texttt{GRANT UPDATE ON mydb.mytable TO 'salesteam'}
+\item To grant delete priviledges, use \texttt{GRANT DELETE ON mydb.mytable TO 'salesteam'}
+\item To view a stored procedure, use \texttt{GRANT VIEW ON mydb.myproc TO 'salesteam'}
+\item To execute the stored procedure, use \texttt{GRANT EXECUTE ON mydb.myproc TO 'salesteam'}
+\item To change the definition of a procedure, use \texttt{GRANT ALTER ON mydb.myproc TO 'salesteam'}
+\item To remove granted priviledges, use \texttt{REVOKE SELECT ON mydb.mytable TO 'salesteam'}
+\item To deny any previous grant of a permission, use \texttt{DENY SELECT ON mydb.mytable TO 'salesteam'}
+\end{compactitem}
+
+
+\textbf{Summary of Security and User Management}
+\begin{compactitem}
+\item Authentication is the process of verifying that the user is who they claim to be. Authorization is the process of giving users permissions or privileges to access the objects and data in the database.
+\item When securing a database, you need to consider the security of the server and operating system, as well as the database and data.
+\item A database user is a user account that is allowed to access specified database objects. Groups are logical groupings of users to simplify user management. A database role defines a set of permissions needed to undertake a specific role in the database.
+\item When implementing role or group membership, use the principle of least privilege.
+\item Auditing does not directly protect your database but does identify gaps in your security.
+\item Customer-managed keys provide the data owner with more control over their data stored in the cloud.
 \end{compactitem}
 ```
 
@@ -203,21 +231,33 @@ Hot backup or online backup - are performed while the data is in use, while in C
 ## Monitoring and Optimization
 
 ```{=latex}
+\textbf{What is database monitoring} \\
+One of the most challenging and necessary elements of database management is performance tuning, and one of the critical parts of this process is database monitoring. The term database monitoring refers to the different tasks related to the scrutinization of the day-to-day operational status of your database.
+
+Database monitoring is crucial to maintain the health and performance of your relational database management system, regardless of which vendor’s database product you are using. As a database admin, you can then utilize this useful information to perform several database monitoring tasks, including: 
 \begin{compactitem}
-\item A shell script is a program that begins with a ‘shebang’ directive and is used to run commands and programs. Scripting languages are interpreted rather than compiled.
-\item Filters are shell commands. The pipe operator `|` allows you to chain filter commands. 
-\item Shell variables can be assigned values with `=` and listed using `set.` Environment variables are shell variables with extended scope, and you can list them with `env.`
-\item Metacharacters are special characters that have meaning to the shell.
-\item Quoting specifies whether the shell should interpret special characters as metacharacters or 'escape' them.
-\item Input/Output, or I/O redirection, refers to a set of features used for redirecting.
-\item You can use command substitution to replace a command with its output.
-\item Command line arguments provide a way to pass arguments to a shell script.
-\item In concurrent mode, multiple commands can run simultaneously.
-\item You can schedule cron jobs to run periodically at selected times. `m h dom mon dow command` is the cron job syntax.
-\item You can edit cron jobs by running `crontab -e,` and `crontab -l` lists all cron jobs in the cron table.
+\item Forecasting your future hardware requirements based on database usage patterns. 
+\item Analyzing the performance of individual applications or database queries. 
+\item Tracking the usage of indexes and tables. 
+\item Determining the root cause of any system performance degradation. 
+\item Optimizing database elements to provide the best possible performance. 
+\item Assessing the impact of any optimization activities. 
 \end{compactitem}
+
+Reactive monitoring is done after an issue occurs, when you act in direct response to that issue; perhaps by fixing a configuration setting or adding more resources, for example. The most common situations when reactive monitoring occurs is either when your database security has been breached, or the performance of your database reaches critically low levels, or when some other kind of major database incident occurs that greatly impacts your business and therefore needs resolving as soon as possible. In contrast, a proactive monitoring strategy seeks to prevent this reactive panic by identifying issues before they grow into large problems. This is primarily achieved by observing specific metrics from your database and then sending alerts to interested parties if the values of these metrics reach abnormal levels. Proactive monitoring typically utilizes automated processes to perform tasks such as regularly verifying that a database system is online and accessible, verifying that configuration changes do not adversely affect the performance of the database system, and that the database system is operating and performing at acceptable levels. This proactive approach is widely considered to be the better strategy and is preferred by most database admins. 
+
+
+\textbf{Summary of Security and User Management}
+\begin{compactitem}
+\item Database performance is measured by using key performance indicators, known as metrics, that enable DBAs to optimize organizations’ databases.
+\item You should monitor at the infrastructure, platform, query, and user levels.
+\item A database diagnostic log file, also known as an error log or troubleshooting log, contains timestamped messages for various types of informational messages, events, warnings, and error details.
+\item Database optimization commands include OPTIMIZE TABLE in MySQL, VACUUM, and REINDEX in PostgreSQL, and RUNSTATS and REORG in Db2.
+\item Query execution plans show details of the steps used to access data when running query statements.
+\end{compactitem}
+
 ```
 
 # Week 4
 
-## Troubleshooting and Automation
+## 
