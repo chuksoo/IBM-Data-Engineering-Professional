@@ -245,7 +245,6 @@ Database monitoring is crucial to maintain the health and performance of your re
 \end{compactitem}
 
 Reactive monitoring is done after an issue occurs, when you act in direct response to that issue; perhaps by fixing a configuration setting or adding more resources, for example. The most common situations when reactive monitoring occurs is either when your database security has been breached, or the performance of your database reaches critically low levels, or when some other kind of major database incident occurs that greatly impacts your business and therefore needs resolving as soon as possible. In contrast, a proactive monitoring strategy seeks to prevent this reactive panic by identifying issues before they grow into large problems. This is primarily achieved by observing specific metrics from your database and then sending alerts to interested parties if the values of these metrics reach abnormal levels. Proactive monitoring typically utilizes automated processes to perform tasks such as regularly verifying that a database system is online and accessible, verifying that configuration changes do not adversely affect the performance of the database system, and that the database system is operating and performing at acceptable levels. This proactive approach is widely considered to be the better strategy and is preferred by most database admins. 
-
 \textbf{Monitoring Usage and Performance} \\
 Some of the key metrics for monitoring the usage and performance of your database include the following: 
 \begin{compactitem}
@@ -295,57 +294,6 @@ RDBMSs have their own optimization commands
 
 
 ```{=latex}
-\textbf{What is database monitoring} \\
-One of the most challenging and necessary elements of database management is performance tuning, and one of the critical parts of this process is database monitoring. The term database monitoring refers to the different tasks related to the scrutinization of the day-to-day operational status of your database.
-
-Database monitoring is crucial to maintain the health and performance of your relational database management system, regardless of which vendor’s database product you are using. As a database admin, you can then utilize this useful information to perform several database monitoring tasks, including: 
-\begin{compactitem}
-\item Forecasting your future hardware requirements based on database usage patterns. 
-\item Analyzing the performance of individual applications or database queries. 
-\item Tracking the usage of indexes and tables. 
-\item Determining the root cause of any system performance degradation. 
-\item Optimizing database elements to provide the best possible performance. 
-\item Assessing the impact of any optimization activities. 
-\end{compactitem}
-
-Reactive monitoring is done after an issue occurs, when you act in direct response to that issue; perhaps by fixing a configuration setting or adding more resources, for example. The most common situations when reactive monitoring occurs is either when your database security has been breached, or the performance of your database reaches critically low levels, or when some other kind of major database incident occurs that greatly impacts your business and therefore needs resolving as soon as possible. In contrast, a proactive monitoring strategy seeks to prevent this reactive panic by identifying issues before they grow into large problems. This is primarily achieved by observing specific metrics from your database and then sending alerts to interested parties if the values of these metrics reach abnormal levels. Proactive monitoring typically utilizes automated processes to perform tasks such as regularly verifying that a database system is online and accessible, verifying that configuration changes do not adversely affect the performance of the database system, and that the database system is operating and performing at acceptable levels. This proactive approach is widely considered to be the better strategy and is preferred by most database admins. 
-
-\textbf{Monitoring Usage and Performance} \\
-Some of the key metrics for monitoring the usage and performance of your database include the following: 
-\begin{compactitem}
-\item Database throughput - indicates how much total work is being taken on by your database and is typically measured by the number of queries executed per second. 
-\item Database resource usage - monitors the database resource usage by measuring the CPU, memory, log space, and storage usage. This summary metric represents the database resource usage by two aspects: average/max/latest number and time series number. 
-\item Database availability - signals whether the database is up or down, that is, available or unavailable. It is typically a summary metric that represents the historical data on available time as a percentage. 
-\item Database responsiveness - shows how well the system is responding to inbound requests and is another of the more commonly used database performance metrics. It provides DBAs with information on the average response time per query for their database servers, indicating how quickly they respond with query results. 
-\item Database contention - indicates whether there is any contention between connections, by measuring lock-waits and concurrent database connections. Database contention is the term used to describe what happens when multiple processes are competing to access the same database resource at the same time.
-\item Units of work - tracks what transactions (units of work) are consuming the most resources on the database server. 
-\item Connections can display all kinds of network connection information to a database management console and can indicate whether a database server might fail due to long-running queries or having too many open connections. 
-\item Most frequent queries - tracks the most frequent queries received by your database servers, including their frequency and average latency, that is, how long they take to be processed. 
-\item Locked objects - shows detailed information about any locked processes and the process that blocked them. Locks and blocks stop several concurrent transactions from accessing an object at the same time. 
-\item Stored procedures displays the aggregated execution metrics for procedures, external procedures, compiled functions, external functions, compiled triggers, and anonymous blocks invoked since database activation. 
-\item Buffer pools tracks the usage of buffer pools and table spaces. A directory server uses buffer pools to store cached data and to improve database performance. When the buffer pool fills up, it removes older and less-used data to make room for newer data. 
-\item Top consumers shows the top consumers of a system’s resources and can help DBAs with capacity planning and resource placement. 
-\end{compactitem}
-
-\textbf{Optimizing databases} \\
-We optimize database in order to:
-\begin{compactitem}
-\item Identify bottlenecks
-\item Fine-tune queries
-\item Reduce response times
-\end{compactitem}
-
-RDBMSs have their own optimization commands
-\begin{compactitem}
-\item MySQL OPTIMIZE TABLE command
-\item PostgreSQL VACUUM and REINDEX commands
-\item DB2 RUNSTATS and REORG commands
-\end{compactitem}
-
-
-
-
-
 \textbf{Summary of Troubleshooting and Automation}
 \begin{compactitem}
 \item Performance monitoring, dashboards and reports, and server/database logs help identify bottlenecks.
