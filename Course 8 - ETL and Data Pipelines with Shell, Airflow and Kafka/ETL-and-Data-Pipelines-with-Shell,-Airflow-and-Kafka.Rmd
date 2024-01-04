@@ -1,0 +1,187 @@
+---
+title: "ETL and Data Pipelines with Shell, Airflow and Kafka Notes"
+author: "Chuks Okoli"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document:
+    df_print: paged
+  word_document: default
+header-includes: \usepackage{fvextra} 
+                  \usepackage{hyperref} 
+                  \usepackage{caption} 
+                  \usepackage{placeins}
+                  \usepackage{paralist}
+                  \usepackage{amsmath} 
+                  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width=7, fig.height=5, echo = TRUE)
+```
+
+# Week 1
+
+## ETL using Shell Scripts
+
+```{=latex}
+\textbf{ETL and ELT Processes} \\
+ETL stands for Extract, Transform, and Load. ETL is an automated data pipeline engineering methodology, whereby data is acquired and prepared for subsequent use in an analytics environment, such as a data warehouse or data mart. ETL refers to the process of curating data from multiple sources, conforming it to a unified data format or structure, and then loading the transformed data into its new environment. 
+\begin{compactitem}
+\item E = Extraction: Extraction process obtains or reads the data from one or more sources
+  \begin{compactitem}
+    \item Some common methods include: Web scraping, where data is extracted from web pages using applications such as Python or R to parse the underlying HTML code
+    \item Using APIs to programmatically connect to data and query it
+  \end{compactitem}
+\item T = Transformation: Transformation process wrangles the data into a format that is suitable for its destination and its intended use. Transformation is done in an intermediate working environment called a ``staging area" and can include any of the following kinds of processes: 
+  \begin{compactitem}
+    \item Cleaning: fixing errors or missing values
+    \item Filtering: selecting only what is needed 
+    \item Joining disparate data sources: merging related data
+    \item Normalizing: converting data to common units  
+    \item Data Structuring: converting one data format to another, such as JSON, XML, or CSV to database tables 
+    \item Feature engineering: such as creating KPIs for dashboards or machine learning
+    \item Anonymizing and Encrypting: ensuring privacy and security 
+    \item Sorting: ordering the data to improve search performance 
+    \item Aggregating: summarizing granular data 
+    \item Formatting and data typing: making the data compatible with its destination. 
+  \end{compactitem}
+\item L = Load: Loading takes the transformed data and loads it into its new environment (.e.g., database, data warehouses or data mart), ready for visualization, exploration, further transformation, and modelling
+  \begin{compactitem}
+    \item Data loading techniques
+      \begin{compactitem}
+        \item Full
+        \item Incremental
+        \item Scheduled
+        \item On-demand
+        \item Batch and stream
+        \item Push and pull
+        \item Parallel and serial
+      \end{compactitem}
+  \end{compactitem}
+\end{compactitem}
+
+The ETL process is shown in \textbf{Fig. \ref{fig:etl}}.
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=\linewidth]{ETL.png}
+  \caption{The ETL process}
+  \label{fig:etl}
+\end{figure}
+\FloatBarrier
+
+\textbf{Summary of ETL and ELT Processes}
+\begin{compactitem}
+\item ETL stands for Extract, Transform, and Load 
+\item Loading means writing the data to its destination environment 
+\item Cloud platforms are enabling ELT to become an emerging trend 
+\item The key differences between ETL and ELT include the place of transformation, flexibility, Big Data support, and time-to-insight 
+\item There is an increasing demand for access to raw data that drives the evolution from ETL, which is still used, to ELT, which enables ad-hoc, self-serve analytics 
+\item Data extraction often involves advanced technology including database querying, web scraping, and APIs  
+\item Data transformation, such as typing, structuring, normalizing, aggregating, and cleaning, is about formatting data to suit the application 
+\item Information can be lost in transformation processes through filtering and aggregation 
+\item Data loading techniques include scheduled, on-demand, and incremental 
+\item Data can be loaded in batches or streamed continuously 
+\end{compactitem}
+```
+
+\clearpage
+# Week 2
+
+## ETL Workflows as Data Pipelines
+
+```{=latex}
+Traditionally, the overall accuracy of the ETL workflow has been a more important requirement than speed, although efficiency is usually an important factor in minimizing resource costs. To boost efficiency, data is fed through a \emph{data pipeline} in smaller packets (see \textbf{Fig. \ref{fig:etl_workflows}}). While one packet is being extracted, an earlier packet is being transformed, and another is being loaded. In this way, data can keep moving through the workflow without interruption. Any remaining bottlenecks within the pipeline can often be handled by parallelizing slower tasks.  
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=\linewidth]{ETL Workflows.png}
+  \caption{ETL Workflows as Data Pipelines }
+  \label{fig:etl_workflows}
+\end{figure}
+
+With conventional ETL pipelines, data is processed in \emph{batches}, usually on a repeating schedule that ranges from hours to days apart. For example, records accumulating in an Online Transaction Processing System (OLTP) can be moved as a daily batch process to one or more Online Analytics Processing (OLAP) systems where subsequent analysis of large volumes of historical data is carried out. 
+```
+
+## Staging Areas
+```{=latex}
+ETL pipelines are frequently used to integrate data from disparate and usually siloed systems within the enterprise. These systems can be from different vendors, locations, and divisions of the company, which can add significant operational complexity. As an example, (see \textbf{Fig. \ref{fig:staging}}) a cost accounting OLAP system might retrieve data from distinct OLTP systems utilized by the separate payroll, sales, and purchasing departments.
+
+ETL pipelines are frequently used to integrate data from disparate and usually \emph{siloed} systems within the enterprise. These systems can be from different vendors, locations, and divisions of the company, which can add significant operational complexity. As an example, (see \textbf{Fig. \ref{fig:staging}}) a cost accounting OLAP system might retrieve data from distinct OLTP systems utilized by the separate payroll, sales, and purchasing departments. 
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=\linewidth]{Staging.png}
+  \caption{An ETL data integration pipeline concept for a Cost Accounting OLAP}
+  \label{fig:staging}
+\end{figure}
+\FloatBarrier
+```
+
+## ETL Workflows as DAGs
+```{=latex}
+ETL workflows can involve considerable complexity. By breaking down the details of the workflow into individual tasks and dependencies between those tasks, one can gain better control over that complexity. Workflow orchestration tools such as Apache Airflow do just that.
+
+Airflow represents your workflow as a directed acyclic graph (DAG). A simple example of an Airflow DAG is illustrated in \textbf{Fig. \ref{fig:dags}}. Airflow tasks can be expressed using predefined templates, called operators. Popular operators include Bash operators, for running Bash code, and Python operators for running Python code, which makes them extremely versatile for deploying ETL pipelines and many other kinds of workflows into production. 
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=\linewidth]{DAGs.png}
+  \caption{An Apache Airflow DAG representing a workflow}
+  \label{fig:dags}
+\end{figure}
+\FloatBarrier
+```
+
+## An Introduction to Data Pipelines
+
+```{=latex}
+\textbf{Summary of .....}
+\begin{compactitem}
+\item Data pipelines move data from one place, or form, to another 
+\item Data flows through pipelines as a series of data packets 
+\item Latency and throughput are key design considerations for data pipelines 
+\item Data pipeline processes include scheduling or triggering, monitoring, maintenance, and optimization 
+\item Parallelization and I/O buffers can help mitigate bottlenecks 
+\item Batch pipelines extract and operate on batches of data  
+\item Batch processing applies when accuracy is critical, or the most recent data isn’t required 
+\item Streaming data pipelines ingest data packets one-by-one in rapid succession 
+\item Streaming pipelines apply when the most current data is needed 
+\item Examples of streaming data pipelines use cases, such as social media feeds, fraud detection, and real-time product pricing 
+\item Modern data pipeline technologies include schema and transformation support, drag-and-drop GUIs, and security features 
+\item Stream-processing technologies include Apache Kafka, IBM Streams, and SQLStream 
+\end{compactitem}
+```
+
+# Week 3
+
+## Building Data Pipelines using Apache Airflow
+
+```{=latex}
+
+```
+
+# Week 4
+
+## Building Streaming Pipelines using Apache Kafka
+
+
+```{=latex}
+
+```
+
+## ETL using Shell Scripts
+
+```{=latex}
+\textbf{ETL T} \\
+\textbf{}
+\begin{compactitem}
+\item 
+\item 
+\item 
+\item 
+\end{compactitem}
+```
