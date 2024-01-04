@@ -103,12 +103,14 @@ The database lifecycle is shown in \textbf{Fig. \ref{fig:dba_lifecycle}}.
 \end{compactitem}
 ```
 
+\clearpage
 # Week 2
 
 ## Backup and Restore Databases
 
 ```{=latex}
 Backup and restore refer to the process of backing up data for protection purposes-restoring it after data loss from an unplanned shutdown, accidental deletion, or data corruption. \\
+
 \textbf{Backup and Restore scenarios} 
 \begin{compactitem}
 \item Saving a copy of data for protection
@@ -201,8 +203,8 @@ Hot backup or online backup - are performed while the data is in use, while in C
 \textit{Authorization} \\
 Authorization are priviledges granted to users, and to groups or roles. Use the \texttt{SQL GRANT CONNECT} command to grant connection access to a particular database to a particular user, group, or role. To grant connection access to an individual user rather than a group or role, you simply specify the user name in place of the group name. To grant database or table access:
 \begin{compactitem}
-\item To team, use \texttt{GRANT CONNECT TO ``salesteam''}
-\item To a specific person e.g., Joan, use \texttt{GRANT CONNET TO 'joan'}
+\item To team, use \texttt{GRANT CONNECT TO 'salesteam'}
+\item To a specific person e.g., Joan, use \texttt{GRANT CONNECT TO 'joan'}
 \item To grant select priviledges only on a table, use \texttt{GRANT SELECT ON mydb.mytable TO 'salesteam'}
 \item To grant insert priviledges, use \texttt{GRANT INSERT ON mydb.mytable TO 'salesteam'}
 \item To grant update priviledges, use \texttt{GRANT UPDATE ON mydb.mytable TO 'salesteam'}
@@ -244,7 +246,8 @@ Database monitoring is crucial to maintain the health and performance of your re
 \item Assessing the impact of any optimization activities. 
 \end{compactitem}
 
-Reactive monitoring is done after an issue occurs, when you act in direct response to that issue; perhaps by fixing a configuration setting or adding more resources, for example. The most common situations when reactive monitoring occurs is either when your database security has been breached, or the performance of your database reaches critically low levels, or when some other kind of major database incident occurs that greatly impacts your business and therefore needs resolving as soon as possible. In contrast, a proactive monitoring strategy seeks to prevent this reactive panic by identifying issues before they grow into large problems. This is primarily achieved by observing specific metrics from your database and then sending alerts to interested parties if the values of these metrics reach abnormal levels. Proactive monitoring typically utilizes automated processes to perform tasks such as regularly verifying that a database system is online and accessible, verifying that configuration changes do not adversely affect the performance of the database system, and that the database system is operating and performing at acceptable levels. This proactive approach is widely considered to be the better strategy and is preferred by most database admins. 
+Reactive monitoring is done after an issue occurs, when you act in direct response to that issue; perhaps by fixing a configuration setting or adding more resources, for example. The most common situations when reactive monitoring occurs is either when your database security has been breached, or the performance of your database reaches critically low levels, or when some other kind of major database incident occurs that greatly impacts your business and therefore needs resolving as soon as possible. In contrast, a proactive monitoring strategy seeks to prevent this reactive panic by identifying issues before they grow into large problems. This is primarily achieved by observing specific metrics from your database and then sending alerts to interested parties if the values of these metrics reach abnormal levels. Proactive monitoring typically utilizes automated processes to perform tasks such as regularly verifying that a database system is online and accessible, verifying that configuration changes do not adversely affect the performance of the database system, and that the database system is operating and performing at acceptable levels. This proactive approach is widely considered to be the better strategy and is preferred by most database admins. \\
+
 \textbf{Monitoring Usage and Performance} \\
 Some of the key metrics for monitoring the usage and performance of your database include the following: 
 \begin{compactitem}
