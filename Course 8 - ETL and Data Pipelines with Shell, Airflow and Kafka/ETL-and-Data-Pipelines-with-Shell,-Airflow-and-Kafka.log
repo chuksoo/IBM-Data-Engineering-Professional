@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (MiKTeX 22.1) (preloaded format=xelatex 2023.6.22)  4 JAN 2024 02:43
+This is XeTeX, Version 3.141592653-2.6-0.999993 (MiKTeX 22.1) (preloaded format=xelatex 2023.6.22)  5 JAN 2024 01:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -589,13 +589,30 @@ Package: paralist 2017/01/22 v2.7 Extended list environments
 \pl@lab=\toks27
 )
 (/Users/chuksokoli/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+\c@KVtest=\count329
+\sf@farskip=\skip59
+\sf@captopadj=\dimen187
+\sf@capskip=\skip60
+\sf@nearskip=\skip61
+\c@subfigure=\count330
+\c@subfigure@save=\count331
+\c@lofdepth=\count332
+\c@subtable=\count333
+\c@subtable@save=\count334
+\c@lotdepth=\count335
+\sf@top=\skip62
+\sf@bottom=\skip63
+)
+(/Users/chuksokoli/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 bookmark/bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
 
 (/Users/chuksokoli/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 bookmark/bkm-dvipdfm.def
 File: bkm-dvipdfm.def 2020-11-06 v1.29 bookmark driver for dvipdfm (HO)
-\BKM@id=\count329
+\BKM@id=\count336
 ))
 (/Users/chuksokoli/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 xurl/xurl.sty
@@ -942,6 +959,7 @@ ern Roman (RS)
 
 Package hyperref Info: Link coloring OFF on input line 74.
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 76.
@@ -1005,24 +1023,45 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: DAGs.png Graphic file (type bmp)
 <DAGs.png>
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 217--220
+File: Packet-through-pipeline.png Graphic file (type bmp)
+<Packet-through-pipeline.png>
+File: Pipeline_latency.png Graphic file (type bmp)
+<Pipeline_latency.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5]
+File: Pipeline-process-1.png Graphic file (type bmp)
+<Pipeline-process-1.png>
+File: Pipeline-process-2.png Graphic file (type bmp)
+<Pipeline-process-2.png>
+File: Pipeline_monitoring.png Graphic file (type bmp)
+<Pipeline_monitoring.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6] [7]
+File: Airflow.png Graphic file (type bmp)
+<Airflow.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 339--342
 
  []
 
-[5] (ETL-and-Data-Pipelines-with-Shell,-Airflow-and-Kafka.aux)
+[8] [9] (ETL-and-Data-Pipelines-with-Shell,-Airflow-and-Kafka.aux)
  ***********
 LaTeX2e <2023-06-01>
 L3 programming layer <2023-06-05>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21065 strings out of 411177
- 382589 string characters out of 5809188
+ 21306 strings out of 411177
+ 387397 string characters out of 5809188
  1864390 words of memory out of 5000000
- 41376 multiletter control sequences out of 15000+600000
- 516961 words of font info for 65 fonts, out of 8000000 for 9000
+ 41608 multiletter control sequences out of 15000+600000
+ 516969 words of font info for 66 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 90i,6n,120p,1051b,412s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,10n,120p,1051b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ETL-and-Data-Pipelines-with-Shell,-Airflow-and-Kafka.pdf (5 p
+Output written on ETL-and-Data-Pipelines-with-Shell,-Airflow-and-Kafka.pdf (9 p
 ages).

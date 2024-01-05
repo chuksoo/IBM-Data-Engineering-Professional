@@ -14,6 +14,7 @@ header-includes: \usepackage{fvextra}
                   \usepackage{placeins}
                   \usepackage{paralist}
                   \usepackage{amsmath} 
+                  \usepackage{subfig}
                   \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 editor_options:
   chunk_output_type: inline
@@ -139,7 +140,94 @@ Airflow represents your workflow as a directed acyclic graph (DAG). A simple exa
 ## An Introduction to Data Pipelines
 
 ```{=latex}
-\textbf{Summary of .....}
+\textbf{What is a data pipeline} \\
+Data pipelines are pipelines that specifically move or modify data. The purpose of a data pipeline is to move data from one place or form to another. A data pipeline is a system which extracts data and passes it along to optional transformation stages for final loading. This includes low-level hardware architectures, but our focus here is on data pipelines as architectures driven by software processes, such as commands, programs, and processing threads. The simple Bash pipe command in Linux can be used as the 'glue' that connects such processes together.
+
+We can think of data flowing through a pipeline in the form of data packets (see \textbf{Fig. \ref{fig:packet_pipeline}}), a term which we will use to broadly refer to units of data. Packets can range in size from a single record, or event, to large collections of data. Here, we have data packets queued for ingestion to the pipeline. The length of the data pipeline represents the time it takes for a single packet to traverse the pipeline. The arrows between packets represent the throughput delays, or the times between successive packet arrivals. 
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.75\linewidth]{Packet-through-pipeline.png}
+  \caption{Packet flow through a pipeline}
+  \label{fig:packet_pipeline}
+\end{figure}
+\FloatBarrier
+
+There are two key performance considerations regarding data pipelines. The first is \emph{latency}, which is the total time it takes for a single packet of data to pass through the pipeline as shown in \textbf{Fig. \ref{fig:pipeline_latency}}. Equivalently, latency is the sum of the individual times spent during each processing stage within the pipeline. Thus overall latency is limited by the slowest process in the pipeline. For example, no matter how fast your internet service is, the time it takes to load a web page will be decided by the server's speed. The second performance consideration is called \emph{throughput}. It refers to how much data can be fed through the pipeline per unit of time. Processing larger packets per unit of time increases throughput. 
+
+Some of the applications of data pipelines from the multitude of use cases includes: 
+\begin{compactitem}
+  \item The simplest pipeline is one which has no transformations and is used to copy data from one location to another, as in file backups. 
+  \item Integrating disparate raw data sources into a data lake. 
+  \item Moving transactional records to a data warehouse. 
+  \item Streaming data from IoT devices to make information available in the form of dashboards or alerting systems. 
+  \item Preparing raw data for machine learning development or production.
+  \item Message sending and receiving, such as with email, SMS, or online video meetings.
+\end{compactitem}
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.75\linewidth]{Pipeline_latency.png}
+  \caption{Data pipeline performance: latency}
+  \label{fig:pipeline_latency}
+\end{figure}
+\FloatBarrier
+
+\textbf{Key Data Pipeline Processes} \\
+Data pipeline processes typically have the following stages in common as shown in \textbf{Fig. \ref{fig:pipeline-process}}: 
+\begin{compactitem}
+  \item Extraction of data from one or more data sources. 
+  \item Ingestion of the extracted data into the pipeline. 
+  \item Optional data transformation stages within the pipeline
+  \item Loading of the data into a destination facility. 
+  \item A mechanism for scheduling or triggering jobs to run. 
+  \item Monitoring the entire workflow, and Maintenance and optimization as required to keep the pipeline up and running smoothly. 
+\end{compactitem}
+
+\begin{figure}%
+    \centering
+    \subfloat[\centering Stages of data pipeline]{{\includegraphics[width=0.45\linewidth]{Pipeline-process-1} }}%
+    \quad
+    \subfloat[\centering Further stages]{{\includegraphics[width=0.45\linewidth]{Pipeline-process-2} }}%
+    \caption{Data Pipeline Process}%
+    \label{fig:pipeline-process}%
+\end{figure}
+
+The data pipeline needs to be monitored (see \textbf{Fig. \ref{fig:pipeline_monitoring}}) once it is in production to ensure data integrity. Some key monitoring considerations include: 
+\begin{compactitem}
+  \item Latency, or the time it takes for data packets to flow through the pipeline. 
+  \item Throughput demand, the volume of data passing through the pipeline over time. 
+  \item Errors and failures, caused by factors such as network overloading, and failures at the source or destination systems. 
+  \item Utilization rate, or how fully the pipeline's resources are being utilized, which affects cost. 
+  \item Lastly, the pipeline should also have a system for logging events and alerting administrators when failures occur.
+\end{compactitem}  
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.75\linewidth]{Pipeline_monitoring.png}
+  \caption{Data pipeline monitoring considerations}
+  \label{fig:pipeline_monitoring}
+\end{figure}
+\FloatBarrier 
+  
+\textbf{Handling unbalanced loads}
+\begin{compactitem}
+  \item Pipelines typically contain bottlenecks
+  \item Slower stages may be parallelized to speed up throughput
+  \item Processes can be replicated on multiple CPUs/cores/threads
+  \item Data packets are then distributed across these channels
+  \item Pipelines that incorporate parallelism are referred to as being dynamic or non-linear, as opposed to “static,” which applies to serial pipelines
+\end{compactitem}  
+
+\textbf{Stage synchronization}
+\begin{compactitem}
+  \item I/O buffers can help synchronize stages
+  \item An I/O buffer is a holding area for data, placed between processing stages having different or varying delays
+  \item Buffers regulate the flow of data, may improve throughput
+  \item I/O buffers used to distribute loads on parallelized stages
+\end{compactitem}  
+  
+\textbf{Summary of Introduction to Data Pipelines}
 \begin{compactitem}
 \item Data pipelines move data from one place, or form, to another 
 \item Data flows through pipelines as a series of data packets 
@@ -150,10 +238,13 @@ Airflow represents your workflow as a directed acyclic graph (DAG). A simple exa
 \item Batch processing applies when accuracy is critical, or the most recent data isn’t required 
 \item Streaming data pipelines ingest data packets one-by-one in rapid succession 
 \item Streaming pipelines apply when the most current data is needed 
+\item Micro-batch processing can achieve near-real-time data streaming
+\item Lambda architecture applies when access to earlier data is required, and speed is important
 \item Examples of streaming data pipelines use cases, such as social media feeds, fraud detection, and real-time product pricing 
 \item Modern data pipeline technologies include schema and transformation support, drag-and-drop GUIs, and security features 
 \item Stream-processing technologies include Apache Kafka, IBM Streams, and SQLStream 
 \end{compactitem}
+
 ```
 
 # Week 3
@@ -161,6 +252,42 @@ Airflow represents your workflow as a directed acyclic graph (DAG). A simple exa
 ## Building Data Pipelines using Apache Airflow
 
 ```{=latex}
+\textbf{What is Apache Airflow} 
+\begin{compactitem}
+  \item Great open source workflow orchestration tool
+  \item A platform that lets you build and run workflows
+  \item A workflow is represented as a DAG
+  \item Apache Airflow is not a data streaming solution but a workflow manager
+\end{compactitem} 
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.75\linewidth]{Airflow.png}
+  \caption{Simplified view of Airflow's architecture}
+  \label{fig:airflow}
+\end{figure}
+\FloatBarrier 
+  
+\textbf{Summary of Using Apache Airflow to build Data Pipelines}
+\begin{compactitem}
+\item Apache Airflow is scalable, dynamic, extensible, and lean 
+\item The five main features of Apache Airflow are pure Python, useful UI, integration, easy to use, and open source  
+\item A common use case is that Apache Airflow defines and organizes machine learning pipeline dependencies 
+\item Tasks are created with Airflow operators 
+\item Pipelines are specified as dependencies between tasks 
+\item Pipeline DAGs defined as code are more maintainable, testable, and collaborative  
+\item Apache Airflow has a rich UI that simplifies working with data pipelines 
+\item You can visualize your DAG in graph or tree mode 
+\item Key components of a DAG definition file include DAG arguments, DAG and task definitions, and the task pipeline 
+\item The ‘schedule\_interval’ parameter specifies how often to re-run your DAG 
+\item You can save Airflow logs into local file systems and send them to cloud storage, search engines, and log analyzers 
+\item Airflow recommends sending production deployment logs to be analyzed by Elasticsearch or Splunk 
+\item With Airflow’s UI, you can view DAGs and task events 
+\item The three types of Airflow metrics are counters, gauges, and timers 
+\item Airflow recommends that production deployment metrics be sent to and analyzed by Prometheus via StatsD 
+\end{compactitem}
+
+
 
 ```
 
@@ -173,7 +300,6 @@ Airflow represents your workflow as a directed acyclic graph (DAG). A simple exa
 
 ```
 
-## ETL using Shell Scripts
 
 ```{=latex}
 \textbf{ETL T} \\
